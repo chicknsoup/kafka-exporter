@@ -1,0 +1,29 @@
+Kafka Exporter 3
+v1.1: 22072019
+* Fixed: Add recover() to scrape function to log panics
+v1.1: 19072019
+* Fixed: Moved deadbroker monitoring to the top of scrape routine
+* Fixed: Ignore reading offsets from partition with replication factor=1 and leader is dead (roughly reduced metrics update time 70%)
+v1.0: 15072019
+* Fixed: invalid memory address or nil pointer dereference (broker client nil when recovered from zookeeper cluster down)
+* Fixed: Some kazoo debug information added to log file
+* Fixed: Moved go-zookeeper from vendor to main folder
+v1.0: 13072019 Initial Release
+* Added: kazoo function func (kz *Kazoo) Broker(id string) (string, error) { } to get broker ip:port from id
+Metrics added:
+
+topic_current_offset
+topic_oldest_offset
+cluster_nodes
+cluster_current_nodes
+topic_partition_current_isr
+topic_partition_current_offset
+topic_partition_oldest_offset
+topic_partition_current_replicas
+topic_partition_current_leader
+cluster_current_controller
+under_replicated_partition
+consumer_group_partition_offset
+consumer_group_partition_lag
+topic_unavailable_partition
+cluster_dead_broker
